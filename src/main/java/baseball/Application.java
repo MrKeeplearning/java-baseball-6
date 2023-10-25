@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.domain.NumberGenerator;
+import baseball.domain.Judgement;
 
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * 객체 지향 프로그래밍
@@ -12,8 +12,12 @@ import java.util.List;
  */
 public class Application {
     public static void main(String[] args) {
-        NumberGenerator generator = new NumberGenerator();
+        /*NumberGenerator generator = new NumberGenerator();
         List<Integer> numbers = generator.createRandomNumbers();
-        System.out.println(numbers);
+        System.out.println(numbers);*/
+
+        Judgement judgement = new Judgement();
+        final int count = judgement.correctCount(Arrays.asList(4, 5, 6), Arrays.asList(1, 2, 3));
+        System.out.println(count);
     }
 }
