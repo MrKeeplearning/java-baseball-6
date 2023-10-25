@@ -1,7 +1,8 @@
 package baseball.domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,21 +18,10 @@ class RefereeTest {
         referee = new Referee();
     }
 
-    @Test
-    void threeStrike() {
-        String result = referee.compare(ANSWER, Arrays.asList(1, 2, 3));
-        assertThat(result).isEqualTo("0볼 3스트라이크");
-    }
-
-    @Test
-    void nothing() {
-        String result = referee.compare(ANSWER, Arrays.asList(7, 8, 9));
-        assertThat(result).isEqualTo("낫싱");
-    }
-
-    @Test
-    void threeBall() {
-        String result = referee.compare(ANSWER, Arrays.asList(3, 1, 2));
-        assertThat(result).isEqualTo("3볼 0스트라이크");
+    @ParameterizedTest
+    @CsvSource({"1,2,3,0볼 3스트라이크", "7,8,9,낫싱", "3,1,2,3볼 0스트라이크", "1,3,2,2볼 1스트라이크"})
+    public void compare(int number1, int number2, int number3, String expected) {
+        String actual = referee.compare(ANSWER, Arrays.asList(number1, number2, number3));
+        assertThat(actual).isEqualTo(expected);
     }
 }

@@ -2,10 +2,8 @@ package baseball;
 
 import baseball.domain.NumberGenerator;
 import baseball.domain.Referee;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
